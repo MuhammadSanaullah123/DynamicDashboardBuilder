@@ -94,6 +94,7 @@ const Widget = ({ widget }) => {
         gridRow: `${order}/${order + 1}`,
         width: cssProperties.width,
         height: cssProperties.height,
+        background: `${type == "Radar" && "rgb(255,255,255,0.3)"}`,
       }}
     >
       <ChartComponent options={options} data={data} />
