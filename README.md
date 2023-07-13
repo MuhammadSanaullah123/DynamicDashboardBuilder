@@ -14,3 +14,5 @@
     and I have defined that breakpoint to be less than 1200px. You can change this according to your scenario.
 11. For point number 10 to take effect, you need to refresh the browser. Since the user opens the website in mobile or laptop, they do not need
     to refresh.
+12. For testing purposes I have added functionalities of following widgets: Bar, Line, Pie, Radar
+13. Other charts can also be added easily with one line.
