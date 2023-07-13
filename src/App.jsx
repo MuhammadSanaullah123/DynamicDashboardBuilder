@@ -3,7 +3,7 @@ import Widget from "./components/Widget";
 import Navbar from "./components/Navbar";
 import { widgets } from "./constants";
 import react from "./assets/react.svg";
-import vite from "../public/vite.svg";
+import vite from "./assets/vite.svg";
 import chart from "./assets/chart.svg";
 
 import "./App.css";
