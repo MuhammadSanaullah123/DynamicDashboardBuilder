@@ -62,8 +62,8 @@ const widgets = [
 
     labels: ["React", "Angular", "Vanilla JS", "Ruby", "Svelte"],
     cssProperties: {
-      height: "300px",
-      width: "700px",
+      height: "400px",
+      width: "400px",
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
         "rgba(54, 162, 235, 0.2)",
@@ -72,7 +72,7 @@ const widgets = [
         "rgba(153, 102, 255, 0.2)",
       ],
     },
-    order: 4,
+    order: 1,
     priority: 4,
   },
   {
@@ -85,7 +85,7 @@ const widgets = [
       width: "700px",
       backgroundColor: "rgba(153, 102, 255, 0.6)",
     },
-    order: 1,
+    order: 3,
     priority: 3,
   },
 ];

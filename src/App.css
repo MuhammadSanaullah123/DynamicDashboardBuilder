@@ -63,7 +63,7 @@
 }
 #navbar span {
   display: flex;
-  width: 200px;
+  width: 150px;
   justify-content: space-between;
   align-items: center;
   margin-left: auto;
@@ -137,4 +137,49 @@
   background-color: #fff;
   margin: 10px;
   padding: 10px;
+}
+#mainDiv {
+  display: flex;
+}
+#progressDiv {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 10px;
+  padding: 30px 10px 10px 30px;
+  width: 100%;
+}
+#progressDiv #imgDiv {
+  display: flex;
+  align-items: center;
+}
+#progressDiv #imgDiv i {
+  font-size: 40px;
+  margin: 0 15px 0 15px;
+  color: rgb(46, 45, 59);
+}
+.progressimg {
+  width: 100px;
+}
+#parentBar {
+  width: 70%;
+  height: 15px;
+  border-radius: 8px;
+  border: 1px solid rgb(46, 45, 59);
+  margin-top: 20px;
+}
+#childBar {
+  width: 60%;
+  height: 15px;
+  border-radius: 8px;
+  background-color: #00b4ff;
+}
+#progressDiv a {
+  margin-top: 15px;
+  text-align: left;
+  color: rgb(34, 155, 34);
+}
+#progressDiv h3 {
+  text-align: center;
+  margin: 0 0 20px 0;
 }
