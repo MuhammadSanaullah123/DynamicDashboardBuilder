@@ -111,6 +111,11 @@
   margin: 10px;
   padding: 10px;
 }
+@media (max-width: 400px) {
+  .childDiv {
+    width: 90%;
+  }
+}
 .childDiv h6 {
   font-size: 15px;
   margin: 0;
@@ -159,6 +164,7 @@
   margin: 10px;
   padding: 30px 10px 10px 30px;
   width: 100%;
+  border-radius: 6px;
 }
 @media (max-width: 1200px) {
   #progressDiv {
@@ -170,6 +176,11 @@
     width: 90%;
   }
 }
+@media (max-width: 400px) {
+  #progressDiv {
+    padding: 10px;
+  }
+}
 #progressDiv #imgDiv {
   display: flex;
   align-items: center;
@@ -179,15 +190,31 @@
   margin: 0 15px 0 15px;
   color: rgb(46, 45, 59);
 }
+@media (max-width: 400px) {
+  #progressDiv #imgDiv i {
+    font-size: 20px;
+  }
+}
 .progressimg {
   width: 100px;
 }
+@media (max-width: 500px) {
+  .progressimg {
+    width: 50px;
+  }
+}
+
 #parentBar {
   width: 70%;
   height: 15px;
   border-radius: 8px;
   border: 1px solid rgb(46, 45, 59);
   margin-top: 20px;
+}
+@media (max-width: 400px) {
+  #parentBar {
+    width: 100%;
+  }
 }
 #childBar {
   width: 60%;

@@ -29,6 +29,7 @@ const App = () => {
       handleOrder();
     } else {
       setOrderedWidgets(widgets);
+      console.log("INSIDE ELSE");
     }
   }, []);
 
