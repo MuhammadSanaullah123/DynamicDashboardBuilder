@@ -15,30 +15,46 @@ const App = () => {
               <h6>Repairs</h6>
               <div className="hr"></div>
 
-              <p>$7546</p>
-              <p>+25%</p>
+              <p>
+                <b>$</b>7546
+              </p>
+              <p>
+                <i class="fa-solid fa-caret-up up"></i>25%
+              </p>
             </div>
             <div className="childDiv">
               <h6>Network Unlocks</h6>
               <div className="hr"></div>
 
-              <p>$7546</p>
-              <p>+25%</p>
+              <p>
+                <b>$</b>7546
+              </p>
+              <p>
+                <i class="fa-solid fa-caret-up up"></i>25%
+              </p>
             </div>
           </div>
           <div className="twoDiv">
             <div className="childDiv">
               <h6>Accessories & parts</h6>
               <div className="hr"></div>
-              <p>$7546</p>
-              <p>+25%</p>
+              <p>
+                <b>$</b>7546
+              </p>
+              <p>
+                <i class="fa-solid fa-caret-up up"></i>25%
+              </p>
             </div>
             <div className="childDiv">
               <h6>Trade In</h6>
               <div className="hr"></div>
 
-              <p>$7546</p>
-              <p>+25%</p>
+              <p>
+                <b>$</b>7546
+              </p>
+              <p>
+                <i class="fa-solid fa-caret-down down"></i>25%
+              </p>
             </div>
           </div>
         </div>
@@ -46,7 +62,7 @@ const App = () => {
           {widgets
             .sort((a, b) => parseInt(a.priority) - parseInt(b.priority))
             .map((widget, index) => (
-              <Widget widget={widget} key={index} index={index} />
+              <Widget widget={widget} key={index} />
             ))}
         </div>
       </div>

@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 
 //outer libraries
 
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar, Line, Pie, Radar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
+  RadialLinearScale,
   PointElement,
   LineElement,
   BarElement,
@@ -18,6 +19,7 @@ import {
 
 ChartJS.register(
   CategoryScale,
+  RadialLinearScale,
   LinearScale,
   PointElement,
   LineElement,
@@ -28,7 +30,7 @@ ChartJS.register(
   Legend
 );
 
-const Widget = ({ widget, index }) => {
+const Widget = ({ widget }) => {
   let { type, values, labels, legends, title, cssProperties, order, priority } =
     widget;
 
@@ -45,6 +47,9 @@ const Widget = ({ widget, index }) => {
       break;
     case "Pie":
       ChartComponent = Pie;
+      break;
+    case "Radar":
+      ChartComponent = Radar;
       break;
     default:
       ChartComponent = Line;
@@ -84,6 +89,7 @@ const Widget = ({ widget, index }) => {
 
   return (
     <div
+      id="graphDiv"
       style={{
         gridRow: `${order}/${order + 1}`,
         width: cssProperties.width,

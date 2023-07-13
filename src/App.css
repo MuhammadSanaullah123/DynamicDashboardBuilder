@@ -99,7 +99,7 @@
   display: flex;
   flex-direction: column;
   color: rgb(46, 45, 59);
-  background-color: rgba(196, 196, 196, 0.207);
+  background-color: #fff;
   width: 300px;
   align-items: flex-start;
   border-radius: 8px;
@@ -119,9 +119,22 @@
   background-color: rgba(29, 29, 29, 0.236);
   width: 90%;
 }
+.childDiv .up {
+  color: rgb(0, 200, 0);
+  margin-right: 5px;
+}
+.childDiv .down {
+  color: rgb(189, 1, 1);
+  margin-right: 5px;
+}
 @media (max-width: 768px) {
   .twoDiv {
     display: flex;
     flex-direction: column;
   }
+}
+#graphDiv {
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px;
 }
