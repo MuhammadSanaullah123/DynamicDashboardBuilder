@@ -33,6 +33,30 @@
   padding: 0;
   margin: 0 auto;
 }
+@media (max-width: 1000px) {
+  #navbar ul {
+    display: none;
+  }
+  #mobile {
+    display: block;
+  }
+}
+@media (min-width: 1000px) {
+  #mobile {
+    display: none;
+  }
+}
+#navbar #ul-mobile {
+  display: flex;
+  height: 170px;
+  flex-direction: column;
+  width: 120px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(46, 45, 59);
+  border-radius: 6px;
+}
+
 #navbar ul a {
   color: #fff;
   text-decoration: none;
@@ -42,7 +66,9 @@
   width: 200px;
   justify-content: space-between;
   align-items: center;
+  margin-left: auto;
 }
+
 #navbar span i {
   color: #fff;
   font-size: 25px;
@@ -53,4 +79,49 @@
   width: 40px;
   border: 1px solid #fff;
   border-radius: 50%;
+}
+#fixedDiv {
+  padding: 10px 20px 10px 20px;
+}
+#fixedDiv h3 {
+  text-align: left;
+  color: rgb(46, 45, 59);
+  font-size: 24px;
+}
+#fourDiv {
+  display: flex;
+  flex-direction: column;
+}
+.twoDiv {
+  display: flex;
+}
+.childDiv {
+  display: flex;
+  flex-direction: column;
+  color: rgb(46, 45, 59);
+  background-color: rgba(196, 196, 196, 0.207);
+  width: 300px;
+  align-items: flex-start;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 10px;
+}
+.childDiv h6 {
+  font-size: 15px;
+  margin: 0;
+}
+.childDiv p {
+  margin-top: 10px;
+}
+.hr {
+  height: 1px;
+  margin-top: 5px;
+  background-color: rgba(29, 29, 29, 0.236);
+  width: 90%;
+}
+@media (max-width: 768px) {
+  .twoDiv {
+    display: flex;
+    flex-direction: column;
+  }
 }
