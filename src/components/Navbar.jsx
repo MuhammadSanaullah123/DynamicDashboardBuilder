@@ -11,9 +11,7 @@ const Navbar = () => {
   const handleAlert = (e) => {
     alert(`${e} is not yet developed yet!`);
   };
-  /* const handleToggle = () => {
-    
-  }; */
+
   useEffect(() => {
     if (toggle === true) {
       const element = document.getElementById("mobile");
