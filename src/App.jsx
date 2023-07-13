@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Widget from "./components/Widget";
 import Navbar from "./components/Navbar";
 import { widgets } from "./constants";
@@ -8,6 +9,29 @@ import chart from "./assets/chart.svg";
 import "./App.css";
 
 const App = () => {
+  const [orderedWidgets, setOrderedWidgets] = useState([]);
+
+  const handleOrder = () => {
+    let temp = widgets.sort((a, b) => parseInt(a.order) - parseInt(b.order));
+    for (let i = 0; i < temp.length - 1; i++) {
+      if (temp[i].order == temp[i + 1].order) {
+        for (let j = i + 1; j < temp.length; j++) {
+          temp[j].order += 1;
+        }
+      }
+    }
+    setOrderedWidgets(temp);
+  };
+  useEffect(() => {
+    let deviceWidth = window.innerWidth;
+
+    if (deviceWidth <= 1200) {
+      handleOrder();
+    } else {
+      setOrderedWidgets(widgets);
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -80,7 +104,7 @@ const App = () => {
           </div>
         </div>
         <div id="parentDiv">
-          {widgets
+          {orderedWidgets
             .sort((a, b) => parseInt(a.priority) - parseInt(b.priority))
             .map((widget, index) => (
               <Widget widget={widget} key={index} />
