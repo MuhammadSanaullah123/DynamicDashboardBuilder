@@ -30,7 +30,7 @@ ChartJS.register(
   Legend
 );
 
-const Widget = ({ widget, orderedWidgets, index }) => {
+const Widget = ({ widget }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [fetchedData, setFetchedData] = useState([]);
 
@@ -111,7 +111,7 @@ const Widget = ({ widget, orderedWidgets, index }) => {
     const timer = setTimeout(() => {
       handleFetch();
       setIsLoading(false);
-    }, 4000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -126,7 +126,7 @@ const Widget = ({ widget, orderedWidgets, index }) => {
         background: `${type == "Radar" && "rgb(255,255,255,0.3)"}`,
       }}
     >
-      <ChartComponent options={options} data={data} />
+      <ChartComponent options={!isLoading && options} data={data} />
     </div>
   );
 };
