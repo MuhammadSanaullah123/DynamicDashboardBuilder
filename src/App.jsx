@@ -29,7 +29,6 @@ const App = () => {
       handleOrder();
     } else {
       setOrderedWidgets(widgets);
-      console.log("INSIDE ELSE");
     }
   }, []);
 
@@ -108,7 +107,12 @@ const App = () => {
           {orderedWidgets
             .sort((a, b) => parseInt(a.priority) - parseInt(b.priority))
             .map((widget, index) => (
-              <Widget widget={widget} key={index} />
+              <Widget
+                widget={widget}
+                key={index}
+                index={index}
+                orderedWidgets={orderedWidgets}
+              />
             ))}
         </div>
       </div>

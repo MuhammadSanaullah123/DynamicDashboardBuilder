@@ -16,7 +16,7 @@ const widgets = [
       "November",
       "December",
     ],
-    title: "Revenue Generated",
+    title: "Revenue Generated (Priority 2)",
     cssProperties: {
       height: "500px",
       width: "700px",
@@ -26,13 +26,8 @@ const widgets = [
     priority: 2,
   },
   {
-    type: "Line",
-    values: [
-      [12, 19, 3, 5, 2, 3, 20, 7, 8, 11, 15, 6],
-      [6, 15, 11, 8, 7, 20, 3, 2, 5, 3, 19, 12],
-    ],
-    title: "Application Developed",
-    legends: ["Web App", "Mobile App"],
+    type: "Bar",
+    values: [1200, 1900, 300, 500, 200, 700, 2000, 700, 800, 1100, 1500, 600],
     labels: [
       "January",
       "February",
@@ -47,18 +42,19 @@ const widgets = [
       "November",
       "December",
     ],
+    title: "Revenue Generated (Priority 3)",
     cssProperties: {
-      height: "300px",
+      height: "500px",
       width: "700px",
-      backgroundColor: ["red", "green"],
+      backgroundColor: "blue",
     },
     order: 2,
-    priority: 1,
+    priority: 3,
   },
   {
     type: "Pie",
     values: [12, 5, 7, 2, 9],
-    title: "# of votes",
+    title: "# of votes ( Priority 2)",
 
     labels: ["React", "Angular", "Vanilla JS", "Ruby", "Svelte"],
     cssProperties: {
@@ -73,12 +69,12 @@ const widgets = [
       ],
     },
     order: 1,
-    priority: 4,
+    priority: 2,
   },
   {
     type: "Radar",
     values: [600, 1000, 350, 400, 500],
-    title: "Expense",
+    title: "Expense (Priority 3)",
     labels: ["Marketing", "Salary", "License", "Rent", "Maintenance"],
     cssProperties: {
       height: "300px",
@@ -87,6 +83,19 @@ const widgets = [
     },
     order: 3,
     priority: 3,
+  },
+  {
+    type: "Radar",
+    values: [600, 1000, 350, 400, 500],
+    title: "Expense ( Priority 1)",
+    labels: ["Marketing", "Salary", "License", "Rent", "Maintenance"],
+    cssProperties: {
+      height: "300px",
+      width: "700px",
+      backgroundColor: "rgba(153, 102, 255, 0.6)",
+    },
+    order: 3,
+    priority: 1,
   },
 ];
 

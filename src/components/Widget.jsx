@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import Loader from "./Loader";
 //outer libraries
 
 import { Bar, Line, Pie, Radar } from "react-chartjs-2";
@@ -30,12 +30,21 @@ ChartJS.register(
   Legend
 );
 
-const Widget = ({ widget }) => {
-  let { type, values, labels, legends, title, cssProperties, order, priority } =
-    widget;
+const Widget = ({ widget, orderedWidgets, index }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [fetchedData, setFetchedData] = useState([]);
 
-  //To check the rendering priority
-  console.log(`${type} was rendered ${priority}`);
+  let {
+    type,
+    values,
+    labels,
+    legends,
+    title,
+    cssProperties,
+    order,
+    priority,
+    delay,
+  } = widget;
 
   let ChartComponent;
   switch (type) {
@@ -71,8 +80,8 @@ const Widget = ({ widget }) => {
 
   const data = {
     labels: labels,
-    datasets: Array.isArray(values[0])
-      ? values.map((value, index) => ({
+    datasets: Array.isArray(fetchedData[0])
+      ? fetchedData.map((value, index) => ({
           label: legends[index],
           data: value,
           backgroundColor: cssProperties.backgroundColor[index],
@@ -80,12 +89,32 @@ const Widget = ({ widget }) => {
         }))
       : [
           {
-            data: values,
+            data: fetchedData,
             backgroundColor: cssProperties.backgroundColor,
             borderColor: cssProperties.backgroundColor,
           },
         ],
   };
+
+  useEffect(() => {
+    const handleFetch = async () => {
+      const fetchedData = await fetch(
+        "https://run.mocky.io/v3/a48e0e6d-f958-49d7-b3e2-405da44f3ac7"
+      );
+      const temp = await fetchedData.json();
+      setFetchedData(temp.data);
+      console.log(
+        `Chart data with priority ${priority} is fetched and displayed`
+      );
+    };
+
+    const timer = setTimeout(() => {
+      handleFetch();
+      setIsLoading(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div
