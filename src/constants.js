@@ -23,7 +23,7 @@ const widgets = [
     },
     gridPosition: "1/1", //1st column and 1st row
     order: 5,
-    priority: 2,
+    priority: 3,
     value: [],
   },
   {
@@ -86,7 +86,7 @@ const widgets = [
     },
     gridPosition: "1/3", //1st column and 3rd row
     order: 2,
-    priority: 3,
+    priority: 2,
     value: [],
   },
   {

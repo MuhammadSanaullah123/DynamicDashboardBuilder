@@ -31,7 +31,7 @@ ChartJS.register(
 );
 
 const Widget = ({ widget, index, widgets, dataArray }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  /*   const [isLoading, setIsLoading] = useState(true); */
   const [fetchedData, setFetchedData] = useState([]);
   const [widgetIndex, setWidgetIndex] = useState(0);
 
@@ -81,24 +81,23 @@ const Widget = ({ widget, index, widgets, dataArray }) => {
 
   const data = {
     labels: labels,
-    datasets:
-      !isLoading && Array.isArray(fetchedData[0])
-        ? fetchedData.map((value, index) => ({
-            label: legends[index],
+    datasets: /*   !isLoading &&  */ Array.isArray(fetchedData[0])
+      ? fetchedData.map((value, index) => ({
+          label: legends[index],
+          data: value,
+          backgroundColor: cssProperties.backgroundColor[index],
+          borderColor: cssProperties.backgroundColor[index],
+        }))
+      : [
+          {
             data: value,
-            backgroundColor: cssProperties.backgroundColor[index],
-            borderColor: cssProperties.backgroundColor[index],
-          }))
-        : [
-            {
-              data: value,
-              backgroundColor: cssProperties.backgroundColor,
-              borderColor: cssProperties.backgroundColor,
-            },
-          ],
+            backgroundColor: cssProperties.backgroundColor,
+            borderColor: cssProperties.backgroundColor,
+          },
+        ],
   };
 
-  console.log(`Widget with order ${order} has been rendered`);
+  /* console.log(`Widget with order ${order} has been rendered`); */
 
   return (
     <div
@@ -108,7 +107,7 @@ const Widget = ({ widget, index, widgets, dataArray }) => {
         gridRow: `${gridPosition[2]}/${parseInt(gridPosition[2]) + 1}`,
         width: cssProperties.width,
         height: `${
-          !isLoading || type === "Radar"
+          value.length > 0 || type === "Radar"
             ? cssProperties.height
             : cssProperties.height
         }`,
@@ -121,11 +120,11 @@ const Widget = ({ widget, index, widgets, dataArray }) => {
         className="canvascomp"
         style={{
           width: cssProperties.width,
-          height: `${!isLoading ? cssProperties.height : "auto"}`,
+          height: `${value.length > 0 ? cssProperties.height : "auto"}`,
           background: `${type == "Radar" && "rgb(255,255,255,0.3)"}`,
           /*   display: `${isLoading ? "none" : "block"}`, */
         }}
-        options={!isLoading && options}
+        options={value.length > 0 && options}
         data={data}
       />
     </div>

@@ -23,7 +23,7 @@ const App = () => {
 
       const fetchData = async () => {
         const fetchedData = await fetch(
-          "https://run.mocky.io/v3/a48e0e6d-f958-49d7-b3e2-405da44f3ac7"
+          "https://run.mocky.io/v3/13bab32c-f280-4cc9-a802-b3ab7f481e38"
         );
         const tempData = await fetchedData.json();
 
@@ -33,7 +33,10 @@ const App = () => {
         console.log(
           `Data for widget with priority ${temp[currentIndex].priority} has been displayed`
         );
-        if (temp[currentIndex + 1].priority === temp[currentIndex].priority) {
+        if (
+          currentIndex + 1 < temp.length &&
+          temp[currentIndex + 1].priority === temp[currentIndex].priority
+        ) {
           handleFetch(currentIndex + 1);
         } else {
           setTimeout(() => {
@@ -47,9 +50,11 @@ const App = () => {
 
     handleFetch(0);
   };
+
   useEffect(() => {
     handleData();
   }, []);
+
   return (
     <>
       <Navbar />
