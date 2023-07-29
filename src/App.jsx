@@ -73,7 +73,7 @@ const App = () => {
                   <b>$</b>7546
                 </p>
                 <p>
-                  <i class="fa-solid fa-caret-up up"></i>25%
+                  <i className="fa-solid fa-caret-up up"></i>25%
                 </p>
               </div>
               <div className="childDiv">
@@ -84,7 +84,7 @@ const App = () => {
                   <b>$</b>7546
                 </p>
                 <p>
-                  <i class="fa-solid fa-caret-up up"></i>25%
+                  <i className="fa-solid fa-caret-up up"></i>25%
                 </p>
               </div>
             </div>
@@ -96,7 +96,7 @@ const App = () => {
                   <b>$</b>7546
                 </p>
                 <p>
-                  <i class="fa-solid fa-caret-up up"></i>25%
+                  <i className="fa-solid fa-caret-up up"></i>25%
                 </p>
               </div>
               <div className="childDiv">
@@ -107,7 +107,7 @@ const App = () => {
                   <b>$</b>7546
                 </p>
                 <p>
-                  <i class="fa-solid fa-caret-down down"></i>25%
+                  <i className="fa-solid fa-caret-down down"></i>25%
                 </p>
               </div>
             </div>
@@ -116,9 +116,9 @@ const App = () => {
             <h3>Profile</h3>
             <div id="imgDiv">
               <img className="progressimg" src={react} alt="" />
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
               <img className="progressimg" src={vite} alt="" />
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
               <img className="progressimg" src={chart} alt="" />
             </div>
             <div id="parentBar">

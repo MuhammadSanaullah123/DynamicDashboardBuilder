@@ -41,15 +41,15 @@ const Navbar = () => {
         <i
           onClick={() => setToggle(!toggle)}
           id="mobile"
-          class="fa-solid fa-ellipsis"
+          className="fa-solid fa-ellipsis"
         ></i>
         <i
           onClick={(e) => handleAlert("Help Section")}
-          class="fa-solid fa-question"
+          className="fa-solid fa-question"
         ></i>
         <i
           onClick={(e) => handleAlert("Notification Section")}
-          class="fa-solid fa-bell"
+          className="fa-solid fa-bell"
         ></i>
         <img
           onClick={(e) => handleAlert("Profile Section")}
