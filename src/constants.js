@@ -1,7 +1,6 @@
 const widgets = [
   {
     type: "Bar",
-    values: [1200, 1900, 300, 500, 200, 700, 2000, 700, 800, 1100, 1500, 600],
     labels: [
       "January",
       "February",
@@ -16,18 +15,19 @@ const widgets = [
       "November",
       "December",
     ],
-    title: "Revenue Generated (Priority 2)",
+    title: "Revenue Generated",
     cssProperties: {
       height: "500px",
-      width: "700px",
+      width: "600px",
       backgroundColor: "blue",
     },
-    order: 1,
+    gridPosition: "1/1", //1st column and 1st row
+    order: 5,
     priority: 2,
+    value: [],
   },
   {
     type: "Bar",
-    values: [1200, 1900, 300, 500, 200, 700, 2000, 700, 800, 1100, 1500, 600],
     labels: [
       "January",
       "February",
@@ -42,19 +42,20 @@ const widgets = [
       "November",
       "December",
     ],
-    title: "Revenue Generated (Priority 3)",
+    title: "Revenue Generated",
     cssProperties: {
       height: "500px",
-      width: "700px",
+      width: "600px",
       backgroundColor: "blue",
     },
-    order: 2,
+    gridPosition: "2/1", //1st column and 2nd row
+    order: 4,
     priority: 3,
+    value: [],
   },
   {
     type: "Pie",
-    values: [12, 5, 7, 2, 9],
-    title: "# of votes ( Priority 2)",
+    title: "# of votes ",
 
     labels: ["React", "Angular", "Vanilla JS", "Ruby", "Svelte"],
     cssProperties: {
@@ -68,34 +69,39 @@ const widgets = [
         "rgba(153, 102, 255, 0.2)",
       ],
     },
-    order: 1,
+    gridPosition: "1/2", //2nd column and 1st row
+    order: 3,
     priority: 2,
+    value: [],
   },
+
   {
     type: "Radar",
-    values: [600, 1000, 350, 400, 500],
-    title: "Expense (Priority 3)",
+    title: "Expense ",
     labels: ["Marketing", "Salary", "License", "Rent", "Maintenance"],
     cssProperties: {
       height: "300px",
       width: "700px",
       backgroundColor: "rgba(153, 102, 255, 0.6)",
     },
-    order: 3,
+    gridPosition: "1/3", //1st column and 3rd row
+    order: 2,
     priority: 3,
+    value: [],
   },
   {
     type: "Radar",
-    values: [600, 1000, 350, 400, 500],
-    title: "Expense ( Priority 1)",
+    title: "Expense ",
     labels: ["Marketing", "Salary", "License", "Rent", "Maintenance"],
     cssProperties: {
       height: "300px",
       width: "700px",
       backgroundColor: "rgba(153, 102, 255, 0.6)",
     },
-    order: 3,
+    gridPosition: "2/3", //2nd column and 3rd row
+    order: 1,
     priority: 1,
+    value: [],
   },
 ];
 

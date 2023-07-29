@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Loader from "./Loader";
 //outer libraries
 
@@ -30,20 +30,21 @@ ChartJS.register(
   Legend
 );
 
-const Widget = ({ widget }) => {
+const Widget = ({ widget, index, widgets, dataArray }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [fetchedData, setFetchedData] = useState([]);
+  const [widgetIndex, setWidgetIndex] = useState(0);
 
   let {
     type,
-    values,
     labels,
     legends,
     title,
     cssProperties,
     order,
     priority,
-    delay,
+    gridPosition,
+    value,
   } = widget;
 
   let ChartComponent;
@@ -69,7 +70,7 @@ const Widget = ({ widget }) => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: Array.isArray(values[0]) || type == "Pie" ? true : false,
+        display: type == "Pie" ? true : false,
       },
       title: {
         display: true,
@@ -80,53 +81,53 @@ const Widget = ({ widget }) => {
 
   const data = {
     labels: labels,
-    datasets: Array.isArray(fetchedData[0])
-      ? fetchedData.map((value, index) => ({
-          label: legends[index],
-          data: value,
-          backgroundColor: cssProperties.backgroundColor[index],
-          borderColor: cssProperties.backgroundColor[index],
-        }))
-      : [
-          {
-            data: fetchedData,
-            backgroundColor: cssProperties.backgroundColor,
-            borderColor: cssProperties.backgroundColor,
-          },
-        ],
+    datasets:
+      !isLoading && Array.isArray(fetchedData[0])
+        ? fetchedData.map((value, index) => ({
+            label: legends[index],
+            data: value,
+            backgroundColor: cssProperties.backgroundColor[index],
+            borderColor: cssProperties.backgroundColor[index],
+          }))
+        : [
+            {
+              data: value,
+              backgroundColor: cssProperties.backgroundColor,
+              borderColor: cssProperties.backgroundColor,
+            },
+          ],
   };
 
-  useEffect(() => {
-    const handleFetch = async () => {
-      const fetchedData = await fetch(
-        "https://run.mocky.io/v3/a48e0e6d-f958-49d7-b3e2-405da44f3ac7"
-      );
-      const temp = await fetchedData.json();
-      setFetchedData(temp.data);
-      console.log(
-        `Chart data with priority ${priority} is fetched and displayed`
-      );
-    };
-
-    const timer = setTimeout(() => {
-      handleFetch();
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  console.log(`Widget with order ${order} has been rendered`);
 
   return (
     <div
       id="graphDiv"
       style={{
-        gridRow: `${order}/${order + 1}`,
+        gridColumn: `${gridPosition[0]}/${parseInt(gridPosition[0]) + 1}`,
+        gridRow: `${gridPosition[2]}/${parseInt(gridPosition[2]) + 1}`,
         width: cssProperties.width,
-        height: cssProperties.height,
+        height: `${
+          !isLoading || type === "Radar"
+            ? cssProperties.height
+            : cssProperties.height
+        }`,
+
         background: `${type == "Radar" && "rgb(255,255,255,0.3)"}`,
       }}
     >
-      <ChartComponent options={!isLoading && options} data={data} />
+      {value.length === 0 && <Loader />}
+      <ChartComponent
+        className="canvascomp"
+        style={{
+          width: cssProperties.width,
+          height: `${!isLoading ? cssProperties.height : "auto"}`,
+          background: `${type == "Radar" && "rgb(255,255,255,0.3)"}`,
+          /*   display: `${isLoading ? "none" : "block"}`, */
+        }}
+        options={!isLoading && options}
+        data={data}
+      />
     </div>
   );
 };

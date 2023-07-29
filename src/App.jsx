@@ -9,35 +9,54 @@ import chart from "./assets/chart.svg";
 import "./App.css";
 
 const App = () => {
-  const [orderedWidgets, setOrderedWidgets] = useState([]);
+  /*  const [orderedWidgets, setOrderedWidgets] = useState(widgets); */
+  const [update, setUpdate] = useState(false);
 
-  const handleOrder = () => {
-    let temp = widgets.sort((a, b) => parseInt(a.order) - parseInt(b.order));
-    for (let i = 0; i < temp.length - 1; i++) {
-      if (temp[i].order == temp[i + 1].order) {
-        for (let j = i + 1; j < temp.length; j++) {
-          temp[j].order += 1;
-        }
+  const handleData = () => {
+    let temp = [...widgets];
+    temp.sort((a, b) => parseInt(a.priority) - parseInt(b.priority));
+
+    const handleFetch = (currentIndex) => {
+      if (currentIndex === temp.length) {
+        return;
       }
-    }
-    setOrderedWidgets(temp);
+
+      const fetchData = async () => {
+        const fetchedData = await fetch(
+          "https://run.mocky.io/v3/a48e0e6d-f958-49d7-b3e2-405da44f3ac7"
+        );
+        const tempData = await fetchedData.json();
+
+        temp[currentIndex].value = tempData.data;
+        setUpdate((prevUpdate) => !prevUpdate);
+
+        console.log(
+          `Data for widget with priority ${temp[currentIndex].priority} has been displayed`
+        );
+        if (temp[currentIndex + 1].priority === temp[currentIndex].priority) {
+          handleFetch(currentIndex + 1);
+        } else {
+          setTimeout(() => {
+            handleFetch(currentIndex + 1);
+          }, 2000);
+        }
+      };
+
+      fetchData();
+    };
+
+    handleFetch(0);
   };
   useEffect(() => {
-    let deviceWidth = window.innerWidth;
-
-    if (deviceWidth <= 1200) {
-      handleOrder();
-    } else {
-      setOrderedWidgets(widgets);
-    }
+    handleData();
   }, []);
-
   return (
     <>
       <Navbar />
 
       <div id="fixedDiv">
         <h3>Welcome Muhammad!</h3>
+
         <div id="mainDiv">
           <div id="fourDiv">
             <div className="twoDiv">
@@ -104,14 +123,15 @@ const App = () => {
           </div>
         </div>
         <div id="parentDiv">
-          {orderedWidgets
-            .sort((a, b) => parseInt(a.priority) - parseInt(b.priority))
+          {widgets
+            .sort((a, b) => parseInt(a.order) - parseInt(b.order))
             .map((widget, index) => (
               <Widget
                 widget={widget}
                 key={index}
                 index={index}
-                orderedWidgets={orderedWidgets}
+                widgets={widgets}
+                /*  dataArray={dataArray} */
               />
             ))}
         </div>

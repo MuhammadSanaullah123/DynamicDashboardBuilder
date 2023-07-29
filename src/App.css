@@ -147,6 +147,7 @@
   background-color: #fff;
   margin: 10px;
   padding: 10px;
+  position: relative;
 }
 
 #mainDiv {
@@ -235,12 +236,15 @@ canvas {
   aspect-ratio: 0;
 }
 .spinner {
-  margin: 100px auto;
-  width: 40px;
+  /*  margin: 100px auto; */
+  /*  width: 40px; */
   height: 40px;
-  position: relative;
+  /* position: relative; */
   text-align: center;
   animation: rotate 2s infinite linear;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 
 .spinner:before {
@@ -256,7 +260,9 @@ canvas {
   margin: -10px 0 0 -10px;
   animation: spin 1.5s infinite ease-in-out;
 }
-
+.canvascomp {
+  margin: 0 auto;
+}
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
